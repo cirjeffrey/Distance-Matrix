@@ -51,11 +51,6 @@
     <h1 id="output">DISTANCE</h1>
 
     <script>
-      function test(o, d) {
-        alert(o);
-        alert(d);
-      }
-
       var origin, destination;
       function initAutocomplete() {
         // Create the search box and link it to the UI element.
@@ -84,7 +79,6 @@
       }
 
       function calcDistance(start, end) {
-        console.log("CALCULATING");
         var service = new google.maps.DistanceMatrixService();
         service.getDistanceMatrix(
           {
@@ -122,10 +116,6 @@
                 };
               };
 
-              console.log(
-                "RESPONSE: " + response.rows[0].elements[0].distance.text
-              );
-
               outputDiv.innerHTML =
                 "DISTANCE: " + response.rows[0].elements[0].distance.text;
               /*
@@ -148,6 +138,7 @@
         );
       }
     </script>
+
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDBogpc-GSdpfdovoS9QCoqKg69OVFjgE&libraries=places&callback=initAutocomplete"
       async

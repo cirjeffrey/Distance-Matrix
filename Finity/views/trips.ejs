@@ -1,52 +1,5 @@
-<head>
-  <style>
-    #origin,
-    #destination {
-      background-color: #fff;
-      font-family: Roboto;
-      font-size: 15px;
-      font-weight: 300;
-      margin-left: 12px;
-      padding: 0 11px 0 13px;
-      text-overflow: ellipsis;
-      width: 400px;
-    }
-
-    #origin:focus,
-    #destination:focus {
-      border-color: #4d90fe;
-    }
-
-    #output {
-      display: none;
-    }
-  </style>
-  <script src="../alert.js"></script>
-</head>
-
 <body>
-  <h1>Hello World</h1>
-
-  <form action="/distance" method="post">
-    <input
-      id="origin"
-      type="text"
-      placeholder="Origin"
-      name="origin"
-      required
-    />
-
-    <input
-      id="destination"
-      type="text"
-      placeholder="Destination"
-      name="destination"
-      required
-    />
-
-    <button type="submit">Calculate Distance</button>
-  </form>
-
+  <h1>TRIPS</h1>
   <script>
     var origin, destination;
     function initAutocomplete() {
@@ -76,7 +29,6 @@
     }
 
     function calcDistance(start, end) {
-      console.log("CALCULATING");
       var service = new google.maps.DistanceMatrixService();
       service.getDistanceMatrix(
         {
@@ -93,8 +45,6 @@
           } else {
             var originList = response.originAddresses;
             var destinationList = response.destinationAddresses;
-            var outputDiv = document.getElementById("output");
-            outputDiv.innerHTML = "ERROR CALCULATING DISTANCE";
 
             var showGeocodedAddressOnMap = function (asDestination) {
               var icon = asDestination ? destinationIcon : originIcon;
@@ -114,13 +64,15 @@
               };
             };
 
-            outputDiv.innerHTML =
-              "DISTANCE: " + response.rows[0].elements[0].distance.text;
+            console.log(
+              "DISTANCE: " + response.rows[0].elements[0].distance.text
+            );
           }
         }
       );
     }
   </script>
+
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDBogpc-GSdpfdovoS9QCoqKg69OVFjgE&libraries=places&callback=initAutocomplete"
     async
