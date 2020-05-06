@@ -64,7 +64,6 @@ function calcDistance() {
           };
         };
 
-        console.log("RESPONSE: " + response.rows[0].elements[0].distance.text);
 
         outputDiv.innerHTML = response.rows[0].elements[0].distance.text;
         outputDiv.style.display = "block";
